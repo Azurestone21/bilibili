@@ -1,0 +1,64 @@
+<view class="main">
+  <!-- 公共头部 -->
+  <myTitle></myTitle>
+  <!-- 视频详情 -->
+  <view class="videoInfo_wrap">
+    <!-- 视频 -->
+    <video src="{{videoInfo.videoSrc}}" controls></video>
+    <!-- 视频标题 -->
+    <view class="videoInfo_title">
+      <text>{{videoInfo.videoTitle}}</text>
+      <text class="fa fa-angle-down"></text>
+    </view>
+    <!-- 视频作者、播放数、弹幕数、日期 -->
+    <view class="videoInfo_author">
+      <text class="author">{{videoInfo.author}}</text>
+      <text>{{videoInfo.playCount}}</text>
+      <text>{{videoInfo.commentCount}}弹幕</text>
+      <text>{{videoInfo.date}}</text>
+    </view>
+  </view>
+  <!-- 推荐视频 -->
+  <view class="other_video">
+    <navigator url="" wx:for="{{otherList}}" wx:key="{{index}}">
+      <view class="other_item">
+        <!-- 视频图片 -->
+        <view class="other_image">
+            <image src="{{item.imgSrc}}" mode="widthFix"></image>
+        </view>
+        <!-- 视频信息 -->
+        <view class="other_info_wrap">
+          <!-- 视频标题 -->
+          <view class="item_title">{{item.title}}</view>
+          <!-- 视频播放量 -->
+          <view class="other_info">
+            <text class="other_play">{{item.playMsg}}次观看</text>
+            <text class="other_count">{{item.commentCount}}</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 评论 -->
+  <view class="comment_wrap">
+    <view class="comment_count">
+      评论 ({{commentData.commentTotalCount}})
+    </view>
+    <view class="comment_list">
+      <view class="comment_item" wx:for="{{commentData.commentList}}" wx:key="{{index}}">
+        <!-- 左边 头像 -->
+        <view class="comment_user">
+          <image src="{{item.userIconSrc}}" mode="widthFix"></image>
+        </view>
+        <!-- 右边 评论 -->
+        <view class="comment_info">
+          <view class="comment_detail">
+            <text class="comment_author">{{item.username}}</text>
+            <text class="comment_date">{{item.commentDate}}</text>
+          </view>
+          <view class="comment_comtent">{{item.commentInfo}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
